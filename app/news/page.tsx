@@ -100,7 +100,7 @@ export default function News() {
           <div className={styles.sectionHead}>
             <h2>
               Parish Newsletter
-              <span className={styles.editableTag}>PDF, monthly</span>
+              <span className={styles.editableTag}>PDF, weekly</span>
             </h2>
             <p>Download the latest edition, or browse the archive.</p>
           </div>
@@ -110,9 +110,9 @@ export default function News() {
                 <span className={styles.fileIcon}>PDF</span>
                 <div>
                   <div className={styles.fileName}>
-                    July 2026 Parish Newsletter
+                    Newsletter — 12 July 2026
                   </div>
-                  <div className={styles.fileMeta}>Published 1 July 2026</div>
+                  <div className={styles.fileMeta}>Published 12 July 2026</div>
                 </div>
               </div>
               <span className={styles.fileDownload}>Download ↓</span>
@@ -122,9 +122,9 @@ export default function News() {
                 <span className={styles.fileIcon}>PDF</span>
                 <div>
                   <div className={styles.fileName}>
-                    June 2026 Parish Newsletter
+                    Newsletter — 5 July 2026
                   </div>
-                  <div className={styles.fileMeta}>Published 1 June 2026</div>
+                  <div className={styles.fileMeta}>Published 5 July 2026</div>
                 </div>
               </div>
               <span className={styles.fileDownload}>Download ↓</span>
@@ -134,9 +134,9 @@ export default function News() {
                 <span className={styles.fileIcon}>PDF</span>
                 <div>
                   <div className={styles.fileName}>
-                    May 2026 Parish Newsletter
+                    Newsletter — 28 June 2026
                   </div>
-                  <div className={styles.fileMeta}>Published 1 May 2026</div>
+                  <div className={styles.fileMeta}>Published 28 June 2026</div>
                 </div>
               </div>
               <span className={styles.fileDownload}>Download ↓</span>

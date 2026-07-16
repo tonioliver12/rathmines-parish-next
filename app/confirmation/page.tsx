@@ -21,6 +21,8 @@ export default function Confirmation() {
         "Preparation includes classes and a reflection or retreat day organised through the school and parish.",
         "The Sacrament is usually administered by the Archbishop or a delegated priest at a set date each year — contact the parish office for the current year's arrangements.",
       ]}
+      certificateType="confirmation"
+      certificateLabel="Confirmation"
     />
   );
 }

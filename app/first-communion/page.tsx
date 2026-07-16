@@ -21,6 +21,8 @@ export default function FirstCommunion() {
         "A short family meeting or retreat day is usually held closer to the date.",
         "First Communion Masses are celebrated in late spring — the parish office will confirm dates each year.",
       ]}
+      certificateType="first-communion"
+      certificateLabel="First Communion"
     />
   );
 }

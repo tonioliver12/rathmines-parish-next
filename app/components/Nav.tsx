@@ -39,10 +39,7 @@ export default function Nav() {
           </li>
         </ul>
         <div className={styles.actions}>
-          <Link
-            href="/mass-intentions"
-            className={`btn-ghost ${styles.requestBtn}`}
-          >
+          <Link href="/mass-intentions" className={styles.requestBtn}>
             Request a Mass
           </Link>
           <Link href="/#give" className={styles.cta}>

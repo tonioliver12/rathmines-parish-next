@@ -21,6 +21,47 @@
   background: #0d1512;
 }
 
+.liveBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(13, 21, 18, 0.75);
+  border: 1px solid rgba(243, 236, 221, 0.25);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #f3ecdd;
+  pointer-events: none;
+}
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e3342f;
+  box-shadow: 0 0 0 3px rgba(227, 52, 47, 0.28);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+}
+
 .fallback {
   color: #d8d3c4;
   text-align: center;

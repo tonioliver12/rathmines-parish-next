@@ -22,6 +22,8 @@ export default function Baptism() {
         "Confirm your godparents and, if they belong to another parish, ask them to bring a letter of eligibility from their own parish priest.",
         "Celebrate the baptism, usually a simple, warm ceremony for family and friends.",
       ]}
+      certificateType="baptism"
+      certificateLabel="Baptism"
     />
   );
 }

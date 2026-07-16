@@ -21,6 +21,8 @@ export default function Marriage() {
         "Meet with the priest who will officiate to plan the ceremony, readings and any particular requests.",
         "Confirm final arrangements — music, flowers, photography access — with the parish sacristan closer to the date.",
       ]}
+      certificateType="marriage"
+      certificateLabel="Marriage"
     />
   );
 }

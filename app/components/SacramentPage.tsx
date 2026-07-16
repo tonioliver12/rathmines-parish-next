@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import PageHero from "./PageHero";
 import styles from "./SacramentPage.module.css";
 
@@ -8,9 +9,19 @@ export type SacramentData = {
   tagline: ReactNode;
   paragraphs: ReactNode[];
   steps: ReactNode[];
+  certificateType?: string;
+  certificateLabel?: string;
 };
 
-export default function SacramentPage({ number, name, tagline, paragraphs, steps }: SacramentData) {
+export default function SacramentPage({
+  number,
+  name,
+  tagline,
+  paragraphs,
+  steps,
+  certificateType,
+  certificateLabel,
+}: SacramentData) {
   return (
     <>
       <PageHero
@@ -27,6 +38,16 @@ export default function SacramentPage({ number, name, tagline, paragraphs, steps
               {paragraphs.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
+              {certificateType ? (
+                <p>
+                  <Link
+                    href={`/certificates?type=${certificateType}`}
+                    className="btn-ghost-ink"
+                  >
+                    Request a {certificateLabel} certificate →
+                  </Link>
+                </p>
+              ) : null}
             </div>
             <div className={styles.stepsCard}>
               <h3>How to arrange it</h3>

@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useSearchParams } from "next/navigation";
 import { submitCertificateRequest, type CertificateState } from "./actions";
 import styles from "../components/RequestForm.module.css";
 
@@ -9,6 +10,13 @@ const initialState: CertificateState = {
   status: "idle",
   message: "",
   errors: {},
+};
+
+const CERT_TYPE_LABELS: Record<string, string> = {
+  baptism: "Baptism",
+  "first-communion": "First Communion",
+  confirmation: "Confirmation",
+  marriage: "Marriage",
 };
 
 function SubmitButton() {
@@ -25,6 +33,8 @@ export default function CertificateForm() {
     submitCertificateRequest,
     initialState,
   );
+  const searchParams = useSearchParams();
+  const preselectedType = CERT_TYPE_LABELS[searchParams.get("type") ?? ""];
 
   if (state.status === "success") {
     return (
@@ -47,7 +57,11 @@ export default function CertificateForm() {
       <div className={styles.fieldRow}>
         <div className={styles.field}>
           <label htmlFor="cert-type">Certificate needed</label>
-          <select id="cert-type" name="cert-type" defaultValue="Baptism">
+          <select
+            id="cert-type"
+            name="cert-type"
+            defaultValue={preselectedType ?? "Baptism"}
+          >
             <option>Baptism</option>
             <option>First Communion</option>
             <option>Confirmation</option>

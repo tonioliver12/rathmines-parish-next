@@ -90,6 +90,21 @@ a {
   border-radius: 2px;
 }
 
+.btn-ghost-ink {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 13px 22px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 2px;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+.btn-ghost-ink:hover {
+  background: rgba(30, 59, 50, 0.06);
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(18px);

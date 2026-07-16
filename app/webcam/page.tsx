@@ -29,6 +29,10 @@ export default function Webcam() {
       <section className={styles.section}>
         <div className="wrap">
           <div className={styles.playerFrame}>
+            <span className={styles.liveBadge}>
+              <span className={styles.liveDot} aria-hidden="true" />
+              Live
+            </span>
             <LivePlayer src={STREAM_URL} fallbackHref={FALLBACK_URL} />
           </div>
 

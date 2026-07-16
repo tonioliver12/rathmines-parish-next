@@ -275,6 +275,11 @@ export default function Home() {
               <p>Our office supports families through every arrangement.</p>
             </Link>
           </div>
+          <p className={styles.sacramentsCta}>
+            <Link href="/certificates" className="btn-ghost-ink">
+              Request a certificate →
+            </Link>
+          </p>
         </div>
       </section>
 

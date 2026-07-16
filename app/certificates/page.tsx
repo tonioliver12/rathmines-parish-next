@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import PageHero from "../components/PageHero";
 import CertificateForm from "./CertificateForm";
 import formStyles from "../components/RequestForm.module.css";
@@ -47,7 +48,9 @@ export default function Certificates() {
             archive.
           </p>
 
-          <CertificateForm />
+          <Suspense fallback={null}>
+            <CertificateForm />
+          </Suspense>
         </div>
       </section>
     </>
