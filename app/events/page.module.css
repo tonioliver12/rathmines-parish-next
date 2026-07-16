@@ -1,0 +1,78 @@
+.section {
+  padding: 56px 0;
+}
+
+.monthBlock {
+  margin-bottom: 52px;
+}
+.monthBlock:last-child {
+  margin-bottom: 0;
+}
+
+.monthHead {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--burgundy);
+}
+
+.eventRow {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.eventRow:first-of-type {
+  border-top: none;
+}
+
+.eventDate {
+  text-align: center;
+}
+.eventDay {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+.eventDow {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  color: var(--brass);
+  letter-spacing: 0.05em;
+}
+
+.eventTitle {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.eventDesc {
+  font-size: 0.86rem;
+  color: #5b5648;
+  margin-top: 4px;
+}
+.eventTime {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.76rem;
+  color: var(--sage);
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .eventRow {
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+  }
+  .eventTime {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+}

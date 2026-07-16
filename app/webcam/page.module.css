@@ -1,0 +1,55 @@
+.section {
+  padding: 64px 0;
+}
+
+.playerFrame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0d1512;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.playerFrame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 48px;
+}
+.infoRow h3 {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  letter-spacing: 0.06em;
+  color: var(--burgundy);
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.infoRow p {
+  font-size: 0.96rem;
+  color: #403c33;
+  line-height: 1.7;
+}
+
+.fallbackNote {
+  font-size: 0.82rem;
+  color: #8a8471;
+  margin-top: 14px;
+}
+
+@media (max-width: 860px) {
+  .infoRow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

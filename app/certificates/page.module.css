@@ -1,0 +1,29 @@
+.certTypes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-bottom: 44px;
+}
+.certType {
+  background: var(--paper);
+  padding: 20px 18px;
+}
+.certType h3 {
+  font-size: 1.02rem;
+  font-style: italic;
+  font-weight: 500;
+}
+.certType p {
+  font-size: 0.8rem;
+  color: #5b5648;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .certTypes {
+    grid-template-columns: 1fr 1fr;
+  }
+}

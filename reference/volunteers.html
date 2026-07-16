@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteers Needed — Rathmines Parish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#1E3B32;
+    --parchment:#F3ECDD;
+    --brass:#B8894A;
+    --sage:#8FA98C;
+    --burgundy:#7A3141;
+    --paper:#FBF8F2;
+    --line: rgba(30,59,50,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:1.05; margin:0;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--brass);}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg, var(--ink), var(--burgundy), var(--sage), var(--brass), var(--ink)); flex-shrink:0;}
+  .brand-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; line-height:1.15;}
+  .brand-sub{font-size:0.64rem; letter-spacing:0.07em; color:#6b6455; font-family:'IBM Plex Mono',monospace; margin-top:2px;}
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.86rem; color:var(--ink); opacity:0.75; transition:opacity 0.2s ease;}
+  nav ul a:hover{opacity:1;}
+  .nav-cta{background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:2px; font-size:0.8rem; text-decoration:none;}
+
+  header.hero{position:relative; background:var(--ink); color:var(--parchment); overflow:hidden; padding:88px 0 0 0;}
+  header.hero::before{content:""; position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 45% at 85% 0%, rgba(184,137,74,0.35), transparent 60%),
+               radial-gradient(ellipse 50% 40% at 10% 100%, rgba(122,49,65,0.35), transparent 60%);
+    pointer-events:none;}
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:end; padding-bottom:60px;}
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.9rem); font-style:italic; font-weight:500; letter-spacing:-0.01em;}
+  .hero h1 em{font-style:normal; color:var(--brass);}
+  .hero-lede{max-width:46ch; margin-top:20px; font-size:1.02rem; color:#D8D3C4; font-weight:300; line-height:1.6;}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .btn-primary{background:var(--brass); color:var(--ink); padding:13px 22px; text-decoration:none; font-size:0.88rem; font-weight:500; border-radius:2px; transition:transform 0.15s ease; display:inline-block;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(243,236,221,0.4); color:var(--parchment); padding:13px 22px; text-decoration:none; font-size:0.88rem; border-radius:2px;}
+
+  .today-card{background:rgba(251,248,242,0.06); border:1px solid rgba(243,236,221,0.18); border-radius:4px; padding:24px 26px; backdrop-filter:blur(4px);}
+  .today-top{margin-bottom:16px;}
+  .season-dot{width:11px; height:11px; border-radius:50%; background:var(--sage); display:inline-block; margin-right:8px; box-shadow:0 0 0 3px rgba(110,139,110,0.25);}
+  .today-title{font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; margin-top:6px;}
+  .mass-row{display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid rgba(243,236,221,0.14); font-size:0.9rem;}
+  .mass-row:first-of-type{border-top:none;}
+  .mass-time{font-family:'IBM Plex Mono',monospace; color:var(--brass);}
+
+  .rhythm{background:var(--parchment); border-bottom:1px solid var(--line);}
+  .rhythm .wrap{padding-top:0; padding-bottom:0;}
+  .rhythm-grid{display:grid; grid-template-columns:repeat(7, 1fr);}
+  .rhythm-day{padding:20px 12px 18px; border-left:1px solid var(--line);}
+  .rhythm-day:first-child{border-left:none;}
+  .rhythm-day .d{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.09em; opacity:0.55;}
+  .rhythm-day .colorbar{height:3px; width:20px; margin:9px 0 11px; border-radius:2px;}
+  .rhythm-day .what{font-size:0.82rem; line-height:1.4; min-height:3.2em; color:#403c33;}
+  .rhythm-day.rest .what{opacity:0.4; font-style:italic;}
+  .rhythm-day.today{background:var(--ink); color:var(--parchment);}
+  .rhythm-day.today .d{opacity:0.8; color:var(--brass);}
+  .rhythm-day.today .what{color:var(--parchment);}
+
+  section{padding:84px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:24px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.7rem,2.8vw,2.35rem); font-style:italic; font-weight:500;}
+  .section-head p{max-width:38ch; font-size:0.92rem; color:#5b5648; margin-top:8px;}
+
+  .welcome{background:var(--paper);}
+  .welcome-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
+  .welcome-grid p{font-size:1rem; line-height:1.75; color:#403c33; margin-bottom:18px;}
+  .drop-cap::first-letter{font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--burgundy); float:left; line-height:0.8; padding-right:10px; padding-top:6px;}
+  .stat-list{display:flex; flex-direction:column;}
+  .stat-item{padding:18px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline;}
+  .stat-item:last-child{border-bottom:1px solid var(--line);}
+  .stat-num{font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-style:italic; color:var(--brass);}
+  .stat-label{font-size:0.82rem; color:#5b5648; max-width:25ch; text-align:right;}
+
+  .feature-band{background:var(--ink); color:var(--parchment);}
+  .feature-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(243,236,221,0.14); border:1px solid rgba(243,236,221,0.14);}
+  .feature-card{background:var(--ink); padding:38px 34px;}
+  .feature-card .eyebrow{color:var(--brass);}
+  .feature-card h3{font-size:1.5rem; font-style:italic; margin-top:12px; font-weight:500;}
+  .feature-card p{font-size:0.9rem; color:#C7C2B2; margin-top:12px; line-height:1.7;}
+  .feature-card a{color:var(--brass); font-size:0.84rem; text-decoration:none; display:inline-block; margin-top:14px;}
+
+  .sacraments{background:var(--parchment);}
+  .sac-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .sac-card{background:var(--parchment); padding:28px 22px; transition:background 0.25s ease;}
+  .sac-card:hover{background:#EBE2CC;}
+  .sac-card .eyebrow{color:var(--burgundy);}
+  .sac-card h3{font-size:1.15rem; font-style:italic; margin-top:10px; font-weight:500;}
+  .sac-card p{font-size:0.82rem; color:#5b5648; margin-top:8px; line-height:1.5;}
+
+  .notices{background:var(--paper);}
+  .notice-list{display:flex; flex-direction:column;}
+  .notice-item{display:grid; grid-template-columns:110px 1fr auto; gap:24px; align-items:center; padding:20px 0; border-top:1px solid var(--line); text-decoration:none; color:inherit;}
+  .notice-list .notice-item:last-child{border-bottom:1px solid var(--line);}
+  .notice-date{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--burgundy);}
+  .notice-title{font-family:'Cormorant Garamond',serif; font-size:1.18rem; font-weight:500;}
+  .notice-arrow{opacity:0.4; transition:transform 0.2s ease, opacity 0.2s ease;}
+  .notice-item:hover .notice-arrow{transform:translateX(6px); opacity:1;}
+
+  .visit{background:var(--ink); color:var(--parchment);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .visit-block{margin-bottom:26px;}
+  .visit-block h3{font-family:'IBM Plex Mono',monospace; letter-spacing:0.06em; color:var(--brass); font-weight:400; margin-bottom:10px; text-transform:uppercase; font-size:0.72rem;}
+  .visit-block p, .visit-block a{font-size:0.96rem; color:#D8D3C4; line-height:1.7; text-decoration:none;}
+  .map-box{aspect-ratio:4/3; border:1px solid rgba(243,236,221,0.25); border-radius:4px; overflow:hidden;
+    position:relative; display:flex; align-items:center; justify-content:center;}
+  .map-box iframe{filter:grayscale(35%) contrast(1.05) brightness(0.92);}
+  .map-pin{width:14px; height:14px; border-radius:50% 50% 50% 0; background:var(--brass); transform:rotate(-45deg); box-shadow:0 0 0 6px rgba(184,137,74,0.18);}
+
+  /* ---- sub-page: volunteers ---- */
+  .page-hero{background:var(--ink); color:var(--parchment); padding:64px 0 48px;}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem); font-style:italic; font-weight:500;}
+  .page-hero p{max-width:56ch; margin-top:16px; color:#D8D3C4; font-size:1rem; line-height:1.7;}
+  .breadcrumb{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); text-decoration:none;}
+  .content-block{max-width:72ch;}
+  .content-block p{font-size:1rem; line-height:1.75; color:#403c33; margin-bottom:18px;}
+  .group-columns{display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:12px;}
+  .group-col h3{font-size:1.05rem; font-style:italic; font-weight:500; margin-bottom:12px; color:var(--burgundy);}
+  .group-col ul{list-style:none; margin:0; padding:0;}
+  .group-col li{font-size:0.9rem; padding:8px 0; border-top:1px solid var(--line); color:#403c33;}
+  .group-col li:first-child{border-top:none;}
+  .cta-box{background:var(--parchment); border:1px solid var(--line); border-radius:4px; padding:32px; margin-top:8px;}
+  .cta-box h3{font-size:1.3rem; font-style:italic; font-weight:500; margin-bottom:12px;}
+  .cta-box p{font-size:0.94rem; color:#403c33; line-height:1.7; margin-bottom:8px;}
+  @media (max-width:860px){ .group-columns{grid-template-columns:1fr; gap:24px;} }
+
+  footer{background:#141F38; color:#8A93AC; padding:44px 0 30px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .footer-grid .brand-name{color:var(--parchment);}
+  footer .fine{font-size:0.76rem; margin-top:14px; max-width:40ch; line-height:1.6;}
+  .footer-links{display:flex; gap:20px; list-style:none; padding:0; margin:0;}
+  .footer-links a{text-decoration:none; font-size:0.8rem; color:#8A93AC;}
+  .footer-links a:hover{color:var(--parchment);}
+
+  [data-reveal]{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .hero-inner{grid-template-columns:1fr; gap:32px;}
+    .rhythm-grid{grid-template-columns:repeat(4,1fr);}
+    .rhythm-day:nth-child(4n+1){border-left:none;}
+    .rhythm-day{border-bottom:1px solid var(--line);}
+    .welcome-grid, .visit-grid{grid-template-columns:1fr; gap:32px;}
+    .feature-grid, .sac-grid{grid-template-columns:1fr;}
+    .notice-item{grid-template-columns:1fr; gap:6px;}
+    section{padding:52px 0;}
+    .wrap{padding:0 20px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+    .btn-primary:hover{transform:none;}
+  }
+  :focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">Mary Immaculate,<br>Refuge of Sinners</div>
+        <div class="brand-sub">RATHMINES · ARCHDIOCESE OF DUBLIN</div>
+      </div>
+    </div>
+    <ul>
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="index.html#sacraments">Sacraments</a></li>
+      <li><a href="index.html#notices">Notices</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#give">Donate</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <a class="breadcrumb" href="index.html#notices">← Back to notices</a>
+    <h1 style="margin-top:18px;">Volunteers needed<br>— get involved.</h1>
+    <p>Volunteers are indispensable to the life of our parish partnership. All baptised people are called by God to minister — there's a role here for whatever time and skills you can offer.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="content-block" data-reveal>
+      <p>Rathmines Parish is blessed to have so many volunteers in various roles and ministries. New volunteers are always welcome to join our team, whether you're looking to give an hour a month or take on a regular ministry.</p>
+    </div>
+
+    <div class="group-columns" data-reveal>
+      <div class="group-col">
+        <h3>Service</h3>
+        <ul>
+          <li>Eucharistic Ministers</li>
+          <li>Readers — Ministers of the Word</li>
+          <li>Eucharistic Adoration Group</li>
+          <li>Liturgy Group</li>
+          <li>Sacristans</li>
+          <li>Church Cleaners</li>
+          <li>Collectors &amp; Counters</li>
+          <li>Baptism Team</li>
+          <li>Funeral Ministry Team</li>
+          <li>Family Mass Group</li>
+          <li>RCIA — Rite of Christian Initiation of Adults</li>
+          <li>Morning Prayer Group</li>
+        </ul>
+      </div>
+      <div class="group-col">
+        <h3>Music</h3>
+        <ul>
+          <li>International Music Group</li>
+          <li>Rathmines Folk Group</li>
+        </ul>
+      </div>
+      <div class="group-col">
+        <h3>Outreach &amp; Ministry</h3>
+        <ul>
+          <li>Rathmines International Group</li>
+          <li>Bethany Support Group</li>
+          <li>Legion of Mary</li>
+          <li>Crosscare</li>
+          <li>St Vincent de Paul Society</li>
+          <li>Pioneers Society</li>
+          <li>Pax Christi</li>
+          <li>St Joseph's Young Priests Society</li>
+          <li>Active Retirement Group</li>
+          <li>Equipes Notre-Dame</li>
+          <li>ACCORD — Relationship Counselling</li>
+          <li>World Missions Ireland</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-box" data-reveal style="margin-top:56px;">
+      <h3>How to apply</h3>
+      <p>Download and complete the Expression of Interest Volunteer Form, and email it to the parish office. You're invited to consider sharing your skills, whatever they may be — practical, musical, pastoral, or administrative.</p>
+      <p style="margin-top:16px;"><a class="btn-primary" href="#" style="display:inline-block;">Download Volunteer Form →</a></p>
+      <p style="margin-top:20px; font-size:0.86rem; color:#5b5648;">
+        Email <a href="mailto:secretary@rathminesparish.com" style="color:var(--burgundy); text-decoration:underline;">secretary@rathminesparish.com</a>
+        or call <a href="tel:+35314971531" style="color:var(--burgundy); text-decoration:underline;">01 497 1531</a> with any questions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand-name" style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Rathmines Parish</div>
+      <p class="fine">Prototype redesign, built with publicly available information from the parish's own website. Registered Charity Number 20016166. Working in partnership with Rathgar Parish.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="index.html#notices">Notices</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

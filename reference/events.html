@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — Rathmines Parish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1E3B32;--parchment:#F3ECDD;--brass:#B8894A;--sage:#8FA98C;--burgundy:#7A3141;--paper:#FBF8F2;--line:rgba(30,59,50,0.14);}
+*{box-sizing:border-box;} html{scroll-behavior:smooth;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:1.05; margin:0;}
+.eyebrow{font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--brass);}
+a{color:inherit;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg, var(--ink), var(--burgundy), var(--sage), var(--brass), var(--ink)); flex-shrink:0;}
+.brand-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; line-height:1.15;}
+.brand-sub{font-size:0.64rem; letter-spacing:0.07em; color:#6b6455; font-family:'IBM Plex Mono',monospace; margin-top:2px;}
+nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+nav ul a{text-decoration:none; font-size:0.86rem; color:var(--ink); opacity:0.75;}
+nav ul a:hover{opacity:1;}
+.nav-cta{background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:2px; font-size:0.8rem; text-decoration:none;}
+.page-hero{background:var(--ink); color:var(--parchment); padding:64px 0 44px;}
+.page-hero h1{font-size:clamp(2rem,4vw,2.9rem); font-style:italic; font-weight:500;}
+.page-hero p{max-width:60ch; margin-top:16px; color:#D8D3C4; font-size:1rem; line-height:1.7;}
+.breadcrumb{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); text-decoration:none;}
+section{padding:56px 0;}
+.month-block{margin-bottom:52px;}
+.month-head{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.6rem; font-weight:500; margin-bottom:20px; color:var(--burgundy);}
+.event-row{display:grid; grid-template-columns:80px 1fr auto; gap:22px; align-items:center; padding:20px 0; border-top:1px solid var(--line);}
+.event-row:first-of-type{border-top:none;}
+.event-date{text-align:center;}
+.event-day{font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-style:italic; font-weight:600; color:var(--ink); line-height:1;}
+.event-dow{font-family:'IBM Plex Mono',monospace; font-size:0.62rem; text-transform:uppercase; color:var(--brass); letter-spacing:0.05em;}
+.event-title{font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:500;}
+.event-desc{font-size:0.86rem; color:#5b5648; margin-top:4px;}
+.event-time{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--sage); white-space:nowrap;}
+footer{background:#122019; color:#8A93AC; padding:44px 0 30px;}
+.footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+.footer-grid .brand-name{color:var(--parchment);}
+footer .fine{font-size:0.76rem; margin-top:14px; max-width:40ch; line-height:1.6;}
+.footer-links{display:flex; gap:20px; list-style:none; padding:0; margin:0; flex-wrap:wrap;}
+.footer-links a{text-decoration:none; font-size:0.8rem; color:#8A93AC;}
+.footer-links a:hover{color:var(--parchment);}
+@media (max-width:860px){ nav ul{display:none;} .wrap{padding:0 20px;} .event-row{grid-template-columns:56px 1fr; gap:14px;} .event-time{grid-column:2; margin-top:4px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div><div class="brand-name">Mary Immaculate,<br>Refuge of Sinners</div><div class="brand-sub">RATHMINES · ARCHDIOCESE OF DUBLIN</div></div>
+    </div>
+    <ul>
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="index.html#sacraments">Sacraments</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#give">Donate</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <a class="breadcrumb" href="index.html">← Back to home</a>
+    <h1 style="margin-top:18px;">What's On</h1>
+    <p>Everything coming up in parish life — from Sunday coffee mornings to the roof fund table quiz.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+
+    <div class="month-block">
+      <div class="month-head">July 2026</div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">16</div><div class="event-dow">Thu</div></div>
+        <div><div class="event-title">Youth Holy Hour</div><div class="event-desc">Eucharistic adoration with music, for young adults.</div></div>
+        <div class="event-time">7:30 PM</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">20</div><div class="event-dow">Mon</div></div>
+        <div><div class="event-title">Parish coffee morning</div><div class="event-desc">After 11 AM Mass — all welcome.</div></div>
+        <div class="event-time">12:00 PM</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">27</div><div class="event-dow">Mon</div></div>
+        <div><div class="event-title">First Communion registration opens</div><div class="event-desc">Contact the parish office or your child's school.</div></div>
+        <div class="event-time">All day</div>
+      </div>
+    </div>
+
+    <div class="month-block">
+      <div class="month-head">August 2026</div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">03</div><div class="event-dow">Mon</div></div>
+        <div><div class="event-title">Annual parish table quiz</div><div class="event-desc">In aid of the roof fund — teams of four, all welcome.</div></div>
+        <div class="event-time">8:00 PM</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">15</div><div class="event-dow">Sat</div></div>
+        <div><div class="event-title">Feast of the Assumption</div><div class="event-desc">Mass times as Sunday — Holy Day of Obligation.</div></div>
+        <div class="event-time">See Mass times</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">31</div><div class="event-dow">Mon</div></div>
+        <div><div class="event-title">Young Adult Mass</div><div class="event-desc">Part of the 11 AM Mass, with tea and coffee after.</div></div>
+        <div class="event-time">11:00 AM</div>
+      </div>
+    </div>
+
+    <div class="month-block" style="margin-bottom:0;">
+      <div class="month-head">Ongoing, every week</div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">—</div><div class="event-dow">Tue</div></div>
+        <div><div class="event-title">Youth Holy Hour</div><div class="event-desc">Every Tuesday, in the church.</div></div>
+        <div class="event-time">7:30 PM</div>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="event-day">—</div><div class="event-dow">Wed</div></div>
+        <div><div class="event-title">Eucharistic Adoration</div><div class="event-desc">A quiet hour before the Blessed Sacrament.</div></div>
+        <div class="event-time">7:00 PM</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand-name" style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Rathmines Parish</div>
+      <p class="fine">Prototype redesign, built with publicly available information from the parish's own website. Registered Charity Number 20016166.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="mass-intentions.html">Mass Intentions</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+.section {
+  padding: 56px 0;
+}
+
+.explainer {
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #403c33;
+  margin-bottom: 44px;
+}
+
+.form {
+  background: var(--parchment);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 36px;
+  max-width: 640px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--burgundy);
+  margin-bottom: 8px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  font-family: var(--font-work-sans), sans-serif;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.fieldError {
+  font-size: 0.78rem;
+  color: var(--burgundy);
+  margin-top: 6px;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.submitBtn {
+  background: var(--brass);
+  color: var(--ink);
+  border: 0;
+  padding: 14px 26px;
+  border-radius: 2px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-work-sans), sans-serif;
+}
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formNote {
+  font-size: 0.8rem;
+  color: #8a8471;
+  margin-top: 16px;
+}
+
+.formError {
+  font-size: 0.86rem;
+  color: var(--burgundy);
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.successBox {
+  background: var(--parchment);
+  border: 1px solid var(--sage);
+  border-radius: 4px;
+  padding: 32px 36px;
+  max-width: 640px;
+}
+.successBox h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.successBox p {
+  font-size: 0.94rem;
+  color: #403c33;
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+  .form {
+    padding: 24px;
+  }
+}

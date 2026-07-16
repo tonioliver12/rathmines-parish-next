@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local form submission logs (temporary, until a real backend is wired up)
+/data
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

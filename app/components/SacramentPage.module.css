@@ -1,0 +1,73 @@
+.section {
+  padding: 64px 0;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: start;
+}
+.contentGrid h2 {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.contentGrid p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #403c33;
+  margin-bottom: 16px;
+}
+
+.stepsCard {
+  background: var(--parchment);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px;
+}
+.stepsCard h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.step {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.step:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.stepNum {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--brass);
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.stepText {
+  font-size: 0.9rem;
+  color: #403c33;
+  line-height: 1.6;
+}
+
+.stepsCard .cta {
+  margin-top: 22px;
+  display: inline-block;
+}
+
+@media (max-width: 860px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

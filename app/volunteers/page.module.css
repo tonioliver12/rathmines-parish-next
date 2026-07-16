@@ -1,0 +1,75 @@
+.section {
+  padding: 84px 0;
+}
+
+.contentBlock {
+  max-width: 72ch;
+}
+.contentBlock p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #403c33;
+  margin-bottom: 18px;
+}
+
+.groupColumns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 12px;
+}
+.groupCol h3 {
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--burgundy);
+}
+.groupCol ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.groupCol li {
+  font-size: 0.9rem;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  color: #403c33;
+}
+.groupCol li:first-child {
+  border-top: none;
+}
+
+.ctaBox {
+  background: var(--parchment);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px;
+  margin-top: 56px;
+}
+.ctaBox h3 {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.ctaBox p {
+  font-size: 0.94rem;
+  color: #403c33;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.ctaBox a.contactLink {
+  color: var(--burgundy);
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .groupColumns {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section {
+    padding: 52px 0;
+  }
+}

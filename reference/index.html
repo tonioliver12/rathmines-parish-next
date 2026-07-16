@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rathmines Parish — Mary Immaculate, Refuge of Sinners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#1E3B32;
+    --parchment:#F3ECDD;
+    --brass:#B8894A;
+    --sage:#8FA98C;
+    --burgundy:#7A3141;
+    --paper:#FBF8F2;
+    --line: rgba(30,59,50,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:1.05; margin:0;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--brass);}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg, var(--ink), var(--burgundy), var(--sage), var(--brass), var(--ink)); flex-shrink:0;}
+  .brand-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; line-height:1.15;}
+  .brand-sub{font-size:0.64rem; letter-spacing:0.07em; color:#6b6455; font-family:'IBM Plex Mono',monospace; margin-top:2px;}
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.86rem; color:var(--ink); opacity:0.75; transition:opacity 0.2s ease;}
+  nav ul a:hover{opacity:1;}
+  .nav-cta{background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:2px; font-size:0.8rem; text-decoration:none;}
+
+  header.hero{position:relative; background:
+      linear-gradient(165deg, rgba(30,59,50,0.90) 15%, rgba(30,59,50,0.62) 55%, rgba(30,59,50,0.93) 100%),
+      url('https://www.rathminesparish.ie/wp-content/uploads/2021/09/DJI_0689-HDR.jpg') center 60%/cover no-repeat;
+    background-color:var(--ink); color:var(--parchment); overflow:hidden; padding:88px 0 0 0;}
+  header.hero::before{content:""; position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 45% at 85% 0%, rgba(184,137,74,0.35), transparent 60%),
+               radial-gradient(ellipse 50% 40% at 10% 100%, rgba(122,49,65,0.35), transparent 60%);
+    pointer-events:none;}
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:end; padding-bottom:60px;}
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.9rem); font-style:italic; font-weight:500; letter-spacing:-0.01em;}
+  .hero h1 em{font-style:normal; color:var(--brass);}
+  .hero-lede{max-width:46ch; margin-top:20px; font-size:1.02rem; color:#D8D3C4; font-weight:300; line-height:1.6;}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .btn-primary{background:var(--brass); color:var(--ink); padding:13px 22px; text-decoration:none; font-size:0.88rem; font-weight:500; border-radius:2px; transition:transform 0.15s ease; display:inline-block;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(243,236,221,0.4); color:var(--parchment); padding:13px 22px; text-decoration:none; font-size:0.88rem; border-radius:2px;}
+
+  .today-card{background:rgba(251,248,242,0.06); border:1px solid rgba(243,236,221,0.18); border-radius:4px; padding:24px 26px; backdrop-filter:blur(4px);}
+  .today-top{margin-bottom:16px;}
+  .season-dot{width:11px; height:11px; border-radius:50%; background:var(--sage); display:inline-block; margin-right:8px; box-shadow:0 0 0 3px rgba(110,139,110,0.25);}
+  .today-title{font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; margin-top:6px;}
+  .mass-row{display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid rgba(243,236,221,0.14); font-size:0.9rem;}
+  .mass-row:first-of-type{border-top:none;}
+  .mass-time{font-family:'IBM Plex Mono',monospace; color:var(--brass);}
+
+  .rhythm{background:var(--parchment); border-bottom:1px solid var(--line);}
+  .rhythm .wrap{padding-top:0; padding-bottom:0;}
+  .rhythm-grid{display:grid; grid-template-columns:repeat(7, 1fr);}
+  .rhythm-day{padding:20px 12px 18px; border-left:1px solid var(--line);}
+  .rhythm-day:first-child{border-left:none;}
+  .rhythm-day .d{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.09em; opacity:0.55;}
+  .rhythm-day .colorbar{height:3px; width:20px; margin:9px 0 11px; border-radius:2px;}
+  .rhythm-day .what{font-size:0.82rem; line-height:1.4; min-height:3.2em; color:#403c33;}
+  .rhythm-day.rest .what{opacity:0.4; font-style:italic;}
+  .rhythm-day.today{background:var(--ink); color:var(--parchment);}
+  .rhythm-day.today .d{opacity:0.8; color:var(--brass);}
+  .rhythm-day.today .what{color:var(--parchment);}
+
+  section{padding:84px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:24px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.7rem,2.8vw,2.35rem); font-style:italic; font-weight:500;}
+  .section-head p{max-width:38ch; font-size:0.92rem; color:#5b5648; margin-top:8px;}
+
+  .welcome{background:var(--paper);}
+  .welcome-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
+  .welcome-grid p{font-size:1rem; line-height:1.75; color:#403c33; margin-bottom:18px;}
+  .drop-cap::first-letter{font-family:'Cormorant Garamond',serif; font-size:3.2rem; font-weight:600; color:var(--burgundy); float:left; line-height:0.8; padding-right:10px; padding-top:6px;}
+  .stat-list{display:flex; flex-direction:column;}
+  .stat-item{padding:18px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline;}
+  .stat-item:last-child{border-bottom:1px solid var(--line);}
+  .stat-num{font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-style:italic; color:var(--brass);}
+  .stat-label{font-size:0.82rem; color:#5b5648; max-width:25ch; text-align:right;}
+
+  .photo-strip{background:var(--paper); padding:48px 0;}
+  .photo-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:0;}
+  .photo-grid img{width:100%; height:220px; object-fit:cover; object-position:center 20%; border-radius:3px; filter:saturate(0.9) contrast(1.02);}
+
+  .feature-band{background:var(--ink); color:var(--parchment);}
+  .feature-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(243,236,221,0.14); border:1px solid rgba(243,236,221,0.14);}
+  .feature-card{background:var(--ink); padding:38px 34px;}
+  .feature-card img{width:100%; height:170px; object-fit:cover; border-radius:3px; margin-bottom:18px; filter:saturate(0.85) contrast(1.05);}
+  .feature-card .eyebrow{color:var(--brass);}
+  .feature-card h3{font-size:1.5rem; font-style:italic; margin-top:12px; font-weight:500;}
+  .feature-card p{font-size:0.9rem; color:#C7C2B2; margin-top:12px; line-height:1.7;}
+  .feature-card a{color:var(--brass); font-size:0.84rem; text-decoration:none; display:inline-block; margin-top:14px;}
+
+  .sacraments{background:var(--parchment);}
+  .sac-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .sac-card{background:var(--parchment); padding:28px 22px; transition:background 0.25s ease; text-decoration:none; color:inherit; display:block;}
+  .sac-card:hover{background:#EBE2CC;}
+  .sac-card .eyebrow{color:var(--burgundy);}
+  .sac-card h3{font-size:1.15rem; font-style:italic; margin-top:10px; font-weight:500;}
+  .sac-card p{font-size:0.82rem; color:#5b5648; margin-top:8px; line-height:1.5;}
+
+  .notices{background:var(--paper);}
+  .notice-list{display:flex; flex-direction:column;}
+  .notice-item{display:grid; grid-template-columns:110px 1fr auto; gap:24px; align-items:center; padding:20px 0; border-top:1px solid var(--line); text-decoration:none; color:inherit;}
+  .notice-list .notice-item:last-child{border-bottom:1px solid var(--line);}
+  .notice-date{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--burgundy);}
+  .notice-title{font-family:'Cormorant Garamond',serif; font-size:1.18rem; font-weight:500;}
+  .notice-arrow{opacity:0.4; transition:transform 0.2s ease, opacity 0.2s ease;}
+  .notice-item:hover .notice-arrow{transform:translateX(6px); opacity:1;}
+
+  .visit{background:var(--ink); color:var(--parchment);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .visit-block{margin-bottom:26px;}
+  .visit-block h3{font-family:'IBM Plex Mono',monospace; letter-spacing:0.06em; color:var(--brass); font-weight:400; margin-bottom:10px; text-transform:uppercase; font-size:0.72rem;}
+  .visit-block p, .visit-block a{font-size:0.96rem; color:#D8D3C4; line-height:1.7; text-decoration:none;}
+  .map-box{aspect-ratio:4/3; border:1px solid rgba(243,236,221,0.25); border-radius:4px; overflow:hidden;
+    position:relative; display:flex; align-items:center; justify-content:center;}
+  .map-box iframe{filter:grayscale(35%) contrast(1.05) brightness(0.92);}
+  .map-pin{width:14px; height:14px; border-radius:50% 50% 50% 0; background:var(--brass); transform:rotate(-45deg); box-shadow:0 0 0 6px rgba(184,137,74,0.18);}
+
+  /* ---- sub-page: volunteers ---- */
+  .page-hero{background:var(--ink); color:var(--parchment); padding:64px 0 48px;}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem); font-style:italic; font-weight:500;}
+  .page-hero p{max-width:56ch; margin-top:16px; color:#D8D3C4; font-size:1rem; line-height:1.7;}
+  .breadcrumb{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); text-decoration:none;}
+  .content-block{max-width:72ch;}
+  .content-block p{font-size:1rem; line-height:1.75; color:#403c33; margin-bottom:18px;}
+  .group-columns{display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:12px;}
+  .group-col h3{font-size:1.05rem; font-style:italic; font-weight:500; margin-bottom:12px; color:var(--burgundy);}
+  .group-col ul{list-style:none; margin:0; padding:0;}
+  .group-col li{font-size:0.9rem; padding:8px 0; border-top:1px solid var(--line); color:#403c33;}
+  .group-col li:first-child{border-top:none;}
+  .cta-box{background:var(--parchment); border:1px solid var(--line); border-radius:4px; padding:32px; margin-top:8px;}
+  .cta-box h3{font-size:1.3rem; font-style:italic; font-weight:500; margin-bottom:12px;}
+  .cta-box p{font-size:0.94rem; color:#403c33; line-height:1.7; margin-bottom:8px;}
+  @media (max-width:860px){ .group-columns{grid-template-columns:1fr; gap:24px;} }
+
+  footer{background:#141F38; color:#8A93AC; padding:44px 0 30px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .footer-grid .brand-name{color:var(--parchment);}
+  footer .fine{font-size:0.76rem; margin-top:14px; max-width:40ch; line-height:1.6;}
+  .footer-links{display:flex; gap:20px; list-style:none; padding:0; margin:0;}
+  .footer-links a{text-decoration:none; font-size:0.8rem; color:#8A93AC;}
+  .footer-links a:hover{color:var(--parchment);}
+
+  [data-reveal]{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .hero-inner{grid-template-columns:1fr; gap:32px;}
+    .rhythm-grid{grid-template-columns:repeat(4,1fr);}
+    .rhythm-day:nth-child(4n+1){border-left:none;}
+    .rhythm-day{border-bottom:1px solid var(--line);}
+    .welcome-grid, .visit-grid{grid-template-columns:1fr; gap:32px;}
+    .photo-grid{grid-template-columns:1fr; gap:12px;}
+    .photo-grid img{height:200px;}
+    .feature-grid, .sac-grid{grid-template-columns:1fr;}
+    .notice-item{grid-template-columns:1fr; gap:6px;}
+    section{padding:52px 0;}
+    .wrap{padding:0 20px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+    .btn-primary:hover{transform:none;}
+  }
+  :focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">Mary Immaculate,<br>Refuge of Sinners</div>
+        <div class="brand-sub">RATHMINES · ARCHDIOCESE OF DUBLIN</div>
+      </div>
+    </div>
+    <ul>
+      <li><a href="#rhythm">Mass Times</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="#sacraments">Sacraments</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="youth.html">Youth</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div style="display:flex; gap:10px;">
+      <a class="btn-ghost" style="padding:9px 16px; font-size:0.8rem; border-color:var(--line); color:var(--ink);" href="mass-intentions.html">Request a Mass</a>
+      <a class="nav-cta" href="#give">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">Founded 1823 &nbsp;·&nbsp; Working in partnership with Rathgar Parish</p>
+      <h1>Fáilte to<br><em>Rathmines Parish</em>.</h1>
+      <p class="hero-lede">The Church of Mary Immaculate, Refuge of Sinners, has stood on Rathmines Road for over two hundred years. This is our online doorway — Mass times, parish news, and a way to stay close whether you're across the road or across the world.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#rhythm">See Mass times</a>
+        <a class="btn-ghost" href="webcam.html">Watch the webcam</a>
+      </div>
+    </div>
+    <div class="today-card">
+      <div class="today-top">
+        <span class="eyebrow"><span class="season-dot"></span>THIS SUNDAY</span>
+        <div class="today-title">Church of Mary Immaculate</div>
+      </div>
+      <div class="mass-row"><span>Mass</span><span class="mass-time">11:00 AM</span></div>
+      <div class="mass-row"><span>Folk Mass</span><span class="mass-time">6:00 PM</span></div>
+      <div class="mass-row"><span>Young Adult Mass</span><span class="mass-time">last Sun/month</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="rhythm" id="rhythm">
+  <div class="wrap">
+    <div class="rhythm-grid">
+      <div class="rhythm-day rest"><span class="d">MON</span><div class="colorbar" style="background:var(--line)"></div><div class="what">No public Mass</div></div>
+      <div class="rhythm-day"><span class="d">TUE</span><div class="colorbar" style="background:var(--sage)"></div><div class="what">Mass, 10:00 AM<br>Youth Holy Hour, 7:30 PM</div></div>
+      <div class="rhythm-day rest"><span class="d">WED</span><div class="colorbar" style="background:var(--line)"></div><div class="what">No public Mass</div></div>
+      <div class="rhythm-day"><span class="d">THU</span><div class="colorbar" style="background:var(--sage)"></div><div class="what">Mass, 10:00 AM</div></div>
+      <div class="rhythm-day"><span class="d">FRI</span><div class="colorbar" style="background:var(--sage)"></div><div class="what">Mass, 10:00 AM</div></div>
+      <div class="rhythm-day"><span class="d">SAT</span><div class="colorbar" style="background:var(--brass)"></div><div class="what">Vigil Mass, 6:00 PM</div></div>
+      <div class="rhythm-day today"><span class="d">SUN</span><div class="colorbar" style="background:var(--brass)"></div><div class="what">Mass 11 AM<br>Folk Mass 6 PM</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="welcome" id="story">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>Two hundred years<br>on Rathmines Road.</h2>
+    </div>
+    <div class="welcome-grid">
+      <div>
+        <p class="drop-cap" data-reveal>Our parish marked its 200th anniversary in 2023 — two centuries of baptisms, weddings, funerals, and ordinary Tuesday mornings that quietly hold a community together. The church still carries that history in its walls: a permanent exhibition of reliquaries, including a relic of the True Cross and historic Papal vestments, is now open to visitors during opening hours.</p>
+        <p data-reveal>We work in partnership with neighbouring Rathgar Parish, and our reach goes further still — through Friends of Kyuso, a parish partnership supporting a community in Kenya.</p>
+      </div>
+      <div class="stat-list" data-reveal>
+        <div class="stat-item"><span class="stat-num">200+</span><span class="stat-label">years since the parish was founded</span></div>
+        <div class="stat-item"><span class="stat-num">2</span><span class="stat-label">parishes working in partnership — Rathmines &amp; Rathgar</span></div>
+        <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">relic of the True Cross, on permanent display</span></div>
+        <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">km to Kyuso, Kenya, our partner community</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="photo-strip">
+  <div class="wrap">
+    <div class="photo-grid" data-reveal>
+      <img src="https://www.rathminesparish.ie/wp-content/uploads/2020/12/side.jpg" alt="Side view of Rathmines Parish church" loading="lazy">
+      <img src="https://www.rathminesparish.ie/wp-content/uploads/2020/12/bottom-front.jpg" alt="Front entrance of Rathmines Parish church" loading="lazy">
+      <img src="https://www.rathminesparish.ie/wp-content/uploads/2021/09/DJI_0689-HDR.jpg" alt="Aerial view of Rathmines Parish church" loading="lazy">
+    </div>
+    <a href="gallery.html" style="display:inline-block; margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--burgundy); text-decoration:none; letter-spacing:0.03em;">View full gallery →</a>
+  </div>
+</section>
+
+<section class="feature-band">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>More than a Sunday</h2>
+      <p>Two things that make this parish distinctly ours.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0 32px;">
+    <div class="feature-grid" data-reveal>
+      <div class="feature-card">
+        <img src="https://www.rathminesparish.ie/wp-content/uploads/2020/12/dome.jpg" alt="Interior of Rathmines Parish church" loading="lazy">
+        <span class="eyebrow">Reliquaries &amp; Exhibition</span>
+        <h3>Walk through 200 years of history</h3>
+        <p>Since our bicentenary in 2023, the church has held a permanent exhibition of historical and reliquary displays — including a relic of the True Cross and Papal vestments. Open during church hours.</p>
+        <a href="#">Plan a visit →</a>
+      </div>
+      <div class="feature-card">
+        <span class="eyebrow">Friends of Kyuso</span>
+        <h3>A parish partnership with Kenya</h3>
+        <p>Rathmines Parish supports Friends of Kyuso, a long-standing partnership with a community in Kenya — one small way our parish looks outward as well as inward.</p>
+        <a href="#">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sacraments" id="sacraments">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>The sacraments</h2>
+      <p>Marking the moments that matter, from a first welcome to a final farewell.</p>
+    </div>
+    <div class="sac-grid" data-reveal>
+      <a class="sac-card" href="baptism.html"><span class="eyebrow">01</span><h3>Baptism</h3><p>Contact the parish office to arrange preparation and a date.</p></a>
+      <a class="sac-card" href="first-communion.html"><span class="eyebrow">02</span><h3>Eucharist — First Communion</h3><p>Prepared through the parish alongside local primary schools.</p></a>
+      <a class="sac-card" href="confirmation.html"><span class="eyebrow">03</span><h3>Confirmation</h3><p>Details and preparation timelines available from the office.</p></a>
+      <a class="sac-card" href="marriage.html"><span class="eyebrow">04</span><h3>Marriage</h3><p>Please get in touch well in advance to begin preparation.</p></a>
+      <a class="sac-card" href="reconciliation.html"><span class="eyebrow">05</span><h3>Reconciliation</h3><p>Confession is heard regularly — see the parish office for times.</p></a>
+      <a class="sac-card" href="funerals.html"><span class="eyebrow">06</span><h3>Funerals</h3><p>Our office supports families through every arrangement.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="notices" id="notices">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>Parish notices</h2>
+      <p>What's on, recently.</p>
+    </div>
+    <div class="notice-list" data-reveal>
+      <a class="notice-item" href="#">
+        <span class="notice-date">11 JUN</span>
+        <span class="notice-title">Summer Masses schedule now available</span>
+        <span class="notice-arrow">→</span>
+      </a>
+      <a class="notice-item" href="volunteers.html">
+        <span class="notice-date">11 JUN</span>
+        <span class="notice-title">Volunteers needed — get involved in parish life</span>
+        <span class="notice-arrow">→</span>
+      </a>
+      <a class="notice-item" href="#">
+        <span class="notice-date">08 JUN</span>
+        <span class="notice-title">Archdiocese of Dublin Summer Dues appeal</span>
+        <span class="notice-arrow">→</span>
+      </a>
+      <a class="notice-item" href="#">
+        <span class="notice-date">01 JUN</span>
+        <span class="notice-title">Family Camino: a free guided tour of Dublin's historic churches</span>
+        <span class="notice-arrow">→</span>
+      </a>
+    </div>
+    <a href="news.html" style="display:inline-block; margin-top:28px; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--burgundy); text-decoration:none; letter-spacing:0.03em;">See all news, the newsletter, homilies &amp; readings →</a>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="visit-block" data-reveal>
+        <h3>Address</h3>
+        <p>Church of Mary Immaculate, Refuge of Sinners<br>Rathmines Road Lower<br>Rathmines, Dublin 6</p>
+        <a class="btn-ghost" style="display:inline-block; margin-top:14px; padding:11px 18px; font-size:0.84rem;" href="https://www.google.com/maps/search/?api=1&query=Church+of+Mary+Immaculate+Refuge+of+Sinners+Rathmines+Road+Lower+Dublin+6" target="_blank" rel="noopener">Get directions →</a>
+      </div>
+      <div class="visit-block" data-reveal>
+        <h3>Contact</h3>
+        <p><a href="mailto:secretary@rathminesparish.com">secretary@rathminesparish.com</a><br><a href="tel:+35314971531">01 497 1531</a></p>
+      </div>
+      <div class="visit-block" data-reveal id="give">
+        <h3>Support the parish</h3>
+        <p>Online donations help keep the parish, and its partnership with Kyuso, running.<br><a class="btn-primary" href="#" style="display:inline-block; margin-top:12px;">Donate online →</a></p>
+        <p style="margin-top:16px; font-size:0.86rem;"><a href="mass-intentions.html" style="text-decoration:underline;">Request a Mass intention</a> · <a href="certificates.html" style="text-decoration:underline;">Request a certificate</a></p>
+      </div>
+    </div>
+    <div class="map-box" data-reveal>
+      <iframe
+        title="Map — Church of Mary Immaculate, Refuge of Sinners, Rathmines"
+        src="https://www.google.com/maps?q=Church+of+Mary+Immaculate+Refuge+of+Sinners+Rathmines+Road+Lower+Dublin+6&output=embed"
+        width="100%" height="100%" style="border:0;" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand-name" style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Rathmines Parish</div>
+      <p class="fine">Prototype redesign, built with publicly available information from the parish's own website. Registered Charity Number 20016166. Working in partnership with Rathgar Parish.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#rhythm">Mass Times</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="mass-intentions.html">Mass Intentions</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

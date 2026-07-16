@@ -1,0 +1,44 @@
+.footer {
+  background: #141f38;
+  color: #8a93ac;
+  padding: 44px 0 30px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.brandName {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.25rem;
+  color: var(--parchment);
+}
+
+.fine {
+  font-size: 0.76rem;
+  margin-top: 14px;
+  max-width: 40ch;
+  line-height: 1.6;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #8a93ac;
+}
+.links a:hover {
+  color: var(--parchment);
+}

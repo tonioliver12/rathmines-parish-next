@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth Section — Rathmines Parish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#1E3B32;
+    --parchment:#F3ECDD;
+    --brass:#B8894A;
+    --sage:#8FA98C;
+    --burgundy:#7A3141;
+    --paper:#FBF8F2;
+    --line: rgba(30,59,50,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:1.05; margin:0;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--brass);}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg, var(--ink), var(--burgundy), var(--sage), var(--brass), var(--ink)); flex-shrink:0;}
+  .brand-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; line-height:1.15;}
+  .brand-sub{font-size:0.64rem; letter-spacing:0.07em; color:#6b6455; font-family:'IBM Plex Mono',monospace; margin-top:2px;}
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.86rem; color:var(--ink); opacity:0.75;}
+  nav ul a:hover{opacity:1;}
+  .nav-cta{background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:2px; font-size:0.8rem; text-decoration:none;}
+
+  .page-hero{background:var(--ink); color:var(--parchment); padding:64px 0 40px;}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem); font-style:italic; font-weight:500;}
+  .page-hero p{max-width:60ch; margin-top:16px; color:#D8D3C4; font-size:1rem; line-height:1.7;}
+  .breadcrumb{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); text-decoration:none;}
+
+  .subnav{background:var(--parchment); border-bottom:1px solid var(--line); position:sticky; top:67px; z-index:40;}
+  .subnav .wrap{display:flex; gap:8px; padding-top:14px; padding-bottom:14px; overflow-x:auto;}
+  .subnav a{
+    font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; color:var(--ink); opacity:0.6; padding:8px 14px; border-radius:20px;
+    white-space:nowrap; transition:all 0.2s ease; border:1px solid transparent;
+  }
+  .subnav a:hover{opacity:1; border-color:var(--line);}
+
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:36px; max-width:64ch;}
+  .section-head h2{font-size:clamp(1.6rem,2.6vw,2.1rem); font-style:italic; font-weight:500;}
+  .section-head p{font-size:0.94rem; color:#5b5648; margin-top:10px; line-height:1.7;}
+
+  .video-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .video-card{background:var(--parchment); border-radius:4px; overflow:hidden; border:1px solid var(--line);}
+  .video-frame{aspect-ratio:16/9; width:100%; border:0; display:block;}
+  .video-meta{padding:16px 18px;}
+  .video-title{font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500;}
+  .video-sub{font-size:0.76rem; color:#8a8471; margin-top:4px; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.03em;}
+
+  .resource-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:28px;}
+  .resource-item{background:var(--paper); padding:18px 24px; display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:inherit;}
+  .resource-item:hover{background:#EFE9DA;}
+  .resource-name{font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500;}
+  .resource-sub{font-size:0.78rem; color:#8a8471; margin-top:2px;}
+
+  .ya-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(243,236,221,0.14); border:1px solid rgba(243,236,221,0.14);}
+  .ya-card{background:var(--ink); color:var(--parchment); padding:32px 30px;}
+  .ya-card .eyebrow{color:var(--brass);}
+  .ya-card h3{font-size:1.3rem; font-style:italic; margin-top:12px; font-weight:500;}
+  .ya-card p{font-size:0.88rem; color:#C7C2B2; margin-top:12px; line-height:1.7;}
+
+  .event-list{margin-top:16px;}
+  .event-row{display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(243,236,221,0.14); font-size:0.86rem;}
+  .event-row:first-of-type{border-top:none;}
+  .event-when{font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:0.78rem;}
+
+  footer{background:#122019; color:#8A93AC; padding:44px 0 30px; border-bottom:none;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .footer-grid .brand-name{color:var(--parchment);}
+  footer .fine{font-size:0.76rem; margin-top:14px; max-width:40ch; line-height:1.6;}
+  .footer-links{display:flex; gap:20px; list-style:none; padding:0; margin:0;}
+  .footer-links a{text-decoration:none; font-size:0.8rem; color:#8A93AC;}
+  .footer-links a:hover{color:var(--parchment);}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .wrap{padding:0 20px;}
+    .video-grid{grid-template-columns:1fr;}
+    .ya-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">Mary Immaculate,<br>Refuge of Sinners</div>
+        <div class="brand-sub">RATHMINES · ARCHDIOCESE OF DUBLIN</div>
+      </div>
+    </div>
+    <ul>
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="youth.html">Youth</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#give">Donate</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <a class="breadcrumb" href="index.html">← Back to home</a>
+    <h1 style="margin-top:18px;">Youth Section</h1>
+    <p>Faith formation and community for every age — from Children's Corner to our Young Adults group.</p>
+  </div>
+</header>
+
+<div class="subnav">
+  <div class="wrap">
+    <a href="#children">Children's Corner</a>
+    <a href="#young-adults">Young Adults</a>
+  </div>
+</div>
+
+<section id="children">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Children's Corner</h2>
+      <p>A few short, faith-filled videos to watch as a family, from Catholic Kids Media — a channel making cartoons and reflections that explain the faith at a child's level, without watering it down.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/qPaAtxiA3Ag" title="The Adventure of Faith! — Catholic Kids Media" loading="lazy" allow="encrypted-media" allowfullscreen></iframe>
+        <div class="video-meta">
+          <div class="video-title">The Adventure of Faith!</div>
+          <div class="video-sub">Catholic Kids Media</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/NWO37TlThuI" title="Peace be with you! — Catholic Kids Media" loading="lazy" allow="encrypted-media" allowfullscreen></iframe>
+        <div class="video-meta">
+          <div class="video-title">Peace Be With You!</div>
+          <div class="video-sub">Catholic Kids Media</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/Slxlzo7DbEI" title="What's Faith? — Catholic Kids Media" loading="lazy" allow="encrypted-media" allowfullscreen></iframe>
+        <div class="video-meta">
+          <div class="video-title">What's Faith?</div>
+          <div class="video-sub">Catholic Kids Media</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-list">
+      <a class="resource-item" href="https://www.youtube.com/@catholickidsmedia" target="_blank" rel="noopener">
+        <div>
+          <div class="resource-name">More videos on Catholic Kids Media →</div>
+          <div class="resource-sub">Visit their full YouTube channel</div>
+        </div>
+      </a>
+      <a class="resource-item" href="#">
+        <div>
+          <div class="resource-name">Colouring sheets for this Sunday's Gospel</div>
+          <div class="resource-sub">Printable, updated weekly</div>
+        </div>
+      </a>
+      <a class="resource-item" href="#">
+        <div>
+          <div class="resource-name">Family Mass — 4th Sunday of the month</div>
+          <div class="resource-sub">A shorter, child-friendly celebration</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="young-adults" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Young Adults</h2>
+      <p>A community for parishioners in their late teens, twenties and thirties — faith, friendship, and a fair bit of tea and biscuits afterwards.</p>
+    </div>
+
+    <div class="ya-grid">
+      <div class="ya-card">
+        <span class="eyebrow">Weekly</span>
+        <h3>Youth Holy Hour</h3>
+        <p>Every Tuesday, 7:30–8:30 PM. Quiet Eucharistic adoration with music, open to all young adults — no experience of prayer needed, just come as you are.</p>
+      </div>
+      <div class="ya-card">
+        <span class="eyebrow">Monthly</span>
+        <h3>Young Adult Mass</h3>
+        <p>Last Sunday of the month, part of our regular 11 AM Mass, followed by tea, coffee and a chance to meet others in the group afterwards.</p>
+      </div>
+    </div>
+
+    <div class="ya-card" style="margin-top:1px;">
+      <span class="eyebrow">What we get up to</span>
+      <h3>Recent &amp; upcoming</h3>
+      <div class="event-list">
+        <div class="event-row"><span>Rathmines Young Adult Jubilee Pilgrimage to Rome</span><span class="event-when">2025</span></div>
+        <div class="event-row"><span>Weekly Tuesday Holy Hour, with music</span><span class="event-when">ongoing</span></div>
+        <div class="event-row"><span>Table quiz &amp; social night, in aid of the roof fund</span><span class="event-when">most terms</span></div>
+      </div>
+      <p style="margin-top:18px; font-size:0.86rem; color:#B7BFB2;">To be added to the Young Adults mailing list, or to find out what's coming up next, contact the parish office.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand-name" style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Rathmines Parish</div>
+      <p class="fine">Prototype redesign, built with publicly available information from the parish's own website. Registered Charity Number 20016166.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

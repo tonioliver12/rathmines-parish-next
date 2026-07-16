@@ -1,0 +1,266 @@
+.subnav {
+  background: var(--parchment);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 67px;
+  z-index: 40;
+}
+.subnavInner {
+  display: flex;
+  gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  overflow-x: auto;
+}
+.subnavInner a {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  opacity: 0.6;
+  padding: 8px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.subnavInner a:hover {
+  opacity: 1;
+  border-color: var(--line);
+}
+
+.section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sectionLast {
+  border-bottom: none;
+}
+
+.sectionHead {
+  margin-bottom: 36px;
+}
+.sectionHead h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-style: italic;
+  font-weight: 500;
+}
+.sectionHead p {
+  max-width: 50ch;
+  font-size: 0.9rem;
+  color: #5b5648;
+  margin-top: 8px;
+}
+
+.editableTag {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage);
+  border: 1px solid var(--sage);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* News / blog cards */
+.blogList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.blogCard {
+  background: var(--paper);
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.blogCard:hover {
+  background: #efe9da;
+}
+.blogDate {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.76rem;
+  color: var(--burgundy);
+}
+.blogTitle {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.blogExcerpt {
+  font-size: 0.86rem;
+  color: #5b5648;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.blogArrow {
+  opacity: 0.4;
+  font-size: 1.1rem;
+}
+
+/* Newsletter / files */
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.fileItem {
+  background: var(--paper);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+}
+.fileItem:hover {
+  background: #efe9da;
+}
+.fileLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.fileIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  background: var(--burgundy);
+  color: var(--parchment);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.fileName {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.fileMeta {
+  font-size: 0.78rem;
+  color: #8a8471;
+  margin-top: 2px;
+}
+.fileDownload {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Homilies */
+.homilyItem {
+  background: var(--paper);
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  gap: 20px;
+}
+.homilyItem:hover {
+  background: #efe9da;
+}
+.homilyTitle {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.homilyDate {
+  font-size: 0.78rem;
+  color: #8a8471;
+  margin-top: 2px;
+}
+.homilyTag {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--sage);
+  border: 1px solid var(--sage);
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* Readings */
+.readingsCard {
+  background: var(--ink);
+  color: var(--parchment);
+  border-radius: 4px;
+  padding: 36px 34px;
+}
+.readingsCard .eyebrow {
+  color: var(--brass);
+}
+.readingsCard h3 {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.readingEntry {
+  padding: 16px 0;
+  border-top: 1px solid rgba(243, 236, 221, 0.14);
+}
+.readingEntry:first-of-type {
+  border-top: none;
+  padding-top: 20px;
+}
+.readingLabel {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sage);
+}
+.readingRef {
+  font-family: var(--font-cormorant-garamond), serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-top: 4px;
+}
+.readingsNote {
+  font-size: 0.8rem;
+  color: #b7bfb2;
+  margin-top: 20px;
+}
+.readingsTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .blogCard {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .readingsTwo {
+    grid-template-columns: 1fr;
+  }
+  .fileItem,
+  .homilyItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

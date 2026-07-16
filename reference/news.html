@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latest News — Rathmines Parish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+    --ink:#1E3B32;
+    --parchment:#F3ECDD;
+    --brass:#B8894A;
+    --sage:#8FA98C;
+    --burgundy:#7A3141;
+    --paper:#FBF8F2;
+    --line: rgba(30,59,50,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Cormorant Garamond', serif; font-weight:600; line-height:1.05; margin:0;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem; color:var(--brass);}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,248,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg, var(--ink), var(--burgundy), var(--sage), var(--brass), var(--ink)); flex-shrink:0;}
+  .brand-name{font-family:'Cormorant Garamond', serif; font-size:1.12rem; font-weight:600; line-height:1.15;}
+  .brand-sub{font-size:0.64rem; letter-spacing:0.07em; color:#6b6455; font-family:'IBM Plex Mono',monospace; margin-top:2px;}
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.86rem; color:var(--ink); opacity:0.75;}
+  nav ul a:hover{opacity:1;}
+  .nav-cta{background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:2px; font-size:0.8rem; text-decoration:none;}
+
+  .page-hero{background:var(--ink); color:var(--parchment); padding:64px 0 40px;}
+  .page-hero h1{font-size:clamp(2rem,4vw,2.9rem); font-style:italic; font-weight:500;}
+  .page-hero p{max-width:60ch; margin-top:16px; color:#D8D3C4; font-size:1rem; line-height:1.7;}
+  .breadcrumb{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); text-decoration:none;}
+
+  .subnav{background:var(--parchment); border-bottom:1px solid var(--line); position:sticky; top:67px; z-index:40;}
+  .subnav .wrap{display:flex; gap:8px; padding-top:14px; padding-bottom:14px; overflow-x:auto;}
+  .subnav a{
+    font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; color:var(--ink); opacity:0.6; padding:8px 14px; border-radius:20px;
+    white-space:nowrap; transition:all 0.2s ease; border:1px solid transparent;
+  }
+  .subnav a:hover{opacity:1; border-color:var(--line);}
+
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:36px;}
+  .section-head h2{font-size:clamp(1.6rem,2.6vw,2.1rem); font-style:italic; font-weight:500;}
+  .section-head p{max-width:50ch; font-size:0.9rem; color:#5b5648; margin-top:8px;}
+  .editable-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--sage); border:1px solid var(--sage); border-radius:20px; padding:3px 10px; margin-left:10px;
+    vertical-align:middle;
+  }
+
+  /* News / blog cards */
+  .blog-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .blog-card{background:var(--paper); padding:26px 28px; display:grid; grid-template-columns:100px 1fr auto; gap:24px; align-items:center; text-decoration:none; color:inherit;}
+  .blog-card:hover{background:#EFE9DA;}
+  .blog-date{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--burgundy);}
+  .blog-title{font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:500;}
+  .blog-excerpt{font-size:0.86rem; color:#5b5648; margin-top:6px; line-height:1.5;}
+  .blog-arrow{opacity:0.4; font-size:1.1rem;}
+
+  /* Newsletter */
+  .file-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .file-item{background:var(--paper); padding:20px 28px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:inherit;}
+  .file-item:hover{background:#EFE9DA;}
+  .file-left{display:flex; align-items:center; gap:16px;}
+  .file-icon{
+    width:38px; height:38px; border-radius:4px; background:var(--burgundy); color:var(--parchment);
+    display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace;
+    font-size:0.62rem; font-weight:500; flex-shrink:0;
+  }
+  .file-name{font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500;}
+  .file-meta{font-size:0.78rem; color:#8a8471; margin-top:2px;}
+  .file-download{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--brass); text-transform:uppercase; letter-spacing:0.04em;}
+
+  /* Homilies */
+  .homily-item{background:var(--paper); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:inherit; gap:20px;}
+  .homily-item:hover{background:#EFE9DA;}
+  .homily-title{font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500;}
+  .homily-date{font-size:0.78rem; color:#8a8471; margin-top:2px;}
+  .homily-tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; color:var(--sage); border:1px solid var(--sage); border-radius:20px; padding:4px 10px; white-space:nowrap;}
+
+  /* Readings */
+  .readings-card{background:var(--ink); color:var(--parchment); border-radius:4px; padding:36px 34px;}
+  .readings-card .eyebrow{color:var(--brass);}
+  .readings-card h3{font-size:1.5rem; font-style:italic; margin-top:10px; font-weight:500;}
+  .reading-entry{padding:16px 0; border-top:1px solid rgba(243,236,221,0.14);}
+  .reading-entry:first-of-type{border-top:none; padding-top:20px;}
+  .reading-label{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--sage);}
+  .reading-ref{font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; margin-top:4px;}
+  .readings-note{font-size:0.8rem; color:#B7BFB2; margin-top:20px;}
+  .readings-two{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+
+  footer{background:#122019; color:#8A93AC; padding:44px 0 30px; border-bottom:none;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .footer-grid .brand-name{color:var(--parchment);}
+  footer .fine{font-size:0.76rem; margin-top:14px; max-width:40ch; line-height:1.6;}
+  .footer-links{display:flex; gap:20px; list-style:none; padding:0; margin:0;}
+  .footer-links a{text-decoration:none; font-size:0.8rem; color:#8A93AC;}
+  .footer-links a:hover{color:var(--parchment);}
+
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .wrap{padding:0 20px;}
+    .blog-card{grid-template-columns:1fr; gap:8px;}
+    .readings-two{grid-template-columns:1fr;}
+    .file-item, .homily-item{flex-direction:column; align-items:flex-start; gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">Mary Immaculate,<br>Refuge of Sinners</div>
+        <div class="brand-sub">RATHMINES · ARCHDIOCESE OF DUBLIN</div>
+      </div>
+    </div>
+    <ul>
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#give">Donate</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <a class="breadcrumb" href="index.html">← Back to home</a>
+    <h1 style="margin-top:18px;">Latest News</h1>
+    <p>Parish notices, the monthly newsletter, homilies, and the day's Mass readings — all in one place.</p>
+  </div>
+</header>
+
+<div class="subnav">
+  <div class="wrap">
+    <a href="#news">News</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#homilies">Homilies</a>
+    <a href="#today">Today's Readings</a>
+    <a href="#sunday">Sunday Readings</a>
+  </div>
+</div>
+
+<section id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>News<span class="editable-tag">Updated weekly</span></h2>
+      <p>Parish announcements, in the style of a running blog — newest first.</p>
+    </div>
+    <div class="blog-list">
+      <a class="blog-card" href="#">
+        <span class="blog-date">11 JUN 2026</span>
+        <span>
+          <span class="blog-title">Summer Masses schedule now available</span>
+          <div class="blog-excerpt">Our summer Mass times run slightly differently from the rest of the year — full schedule now posted.</div>
+        </span>
+        <span class="blog-arrow">→</span>
+      </a>
+      <a class="blog-card" href="volunteers.html">
+        <span class="blog-date">11 JUN 2026</span>
+        <span>
+          <span class="blog-title">Volunteers needed — get involved in parish life</span>
+          <div class="blog-excerpt">New volunteers are always welcome, whatever time or skills you can offer.</div>
+        </span>
+        <span class="blog-arrow">→</span>
+      </a>
+      <a class="blog-card" href="#">
+        <span class="blog-date">08 JUN 2026</span>
+        <span>
+          <span class="blog-title">Archdiocese of Dublin Summer Dues appeal</span>
+          <div class="blog-excerpt">This year's Summer Dues collection supports priests across the archdiocese.</div>
+        </span>
+        <span class="blog-arrow">→</span>
+      </a>
+      <a class="blog-card" href="#">
+        <span class="blog-date">01 JUN 2026</span>
+        <span>
+          <span class="blog-title">Family Camino: a free guided tour of Dublin's historic churches</span>
+          <div class="blog-excerpt">A gentle walking tour for families, visiting some of the city's oldest churches.</div>
+        </span>
+        <span class="blog-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Parish Newsletter<span class="editable-tag">PDF, monthly</span></h2>
+      <p>Download the latest edition, or browse the archive.</p>
+    </div>
+    <div class="file-list">
+      <a class="file-item" href="#">
+        <div class="file-left">
+          <span class="file-icon">PDF</span>
+          <div>
+            <div class="file-name">July 2026 Parish Newsletter</div>
+            <div class="file-meta">Published 1 July 2026</div>
+          </div>
+        </div>
+        <span class="file-download">Download ↓</span>
+      </a>
+      <a class="file-item" href="#">
+        <div class="file-left">
+          <span class="file-icon">PDF</span>
+          <div>
+            <div class="file-name">June 2026 Parish Newsletter</div>
+            <div class="file-meta">Published 1 June 2026</div>
+          </div>
+        </div>
+        <span class="file-download">Download ↓</span>
+      </a>
+      <a class="file-item" href="#">
+        <div class="file-left">
+          <span class="file-icon">PDF</span>
+          <div>
+            <div class="file-name">May 2026 Parish Newsletter</div>
+            <div class="file-meta">Published 1 May 2026</div>
+          </div>
+        </div>
+        <span class="file-download">Download ↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="homilies">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Homilies<span class="editable-tag">Updated weekly</span></h2>
+      <p>Text or audio from recent Sunday homilies.</p>
+    </div>
+    <div class="file-list">
+      <a class="homily-item" href="#">
+        <div>
+          <div class="homily-title">14th Sunday in Ordinary Time</div>
+          <div class="homily-date">5 July 2026</div>
+        </div>
+        <span class="homily-tag">Listen</span>
+      </a>
+      <a class="homily-item" href="#">
+        <div>
+          <div class="homily-title">Feast of Sts Peter and Paul</div>
+          <div class="homily-date">29 June 2026</div>
+        </div>
+        <span class="homily-tag">Read</span>
+      </a>
+      <a class="homily-item" href="#">
+        <div>
+          <div class="homily-title">12th Sunday in Ordinary Time</div>
+          <div class="homily-date">21 June 2026</div>
+        </div>
+        <span class="homily-tag">Listen</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="today">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Today's Mass Readings<span class="editable-tag">Updated daily</span></h2>
+    </div>
+    <div class="readings-card">
+      <span class="eyebrow">Wednesday, Week 15 in Ordinary Time</span>
+      <h3>15 July 2026</h3>
+      <div style="margin-top:20px;">
+        <div class="reading-entry">
+          <div class="reading-label">First Reading</div>
+          <div class="reading-ref">Isaiah 10:5–7, 13–16</div>
+        </div>
+        <div class="reading-entry">
+          <div class="reading-label">Responsorial Psalm</div>
+          <div class="reading-ref">Psalm 94</div>
+        </div>
+        <div class="reading-entry">
+          <div class="reading-label">Gospel</div>
+          <div class="reading-ref">Matthew 11:25–27</div>
+        </div>
+      </div>
+      <p class="readings-note">Full texts available in the missalette at the back of the church, or your parish's usual online liturgy source.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sunday" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>This Sunday's Readings<span class="editable-tag">Updated weekly</span></h2>
+    </div>
+    <div class="readings-card">
+      <span class="eyebrow">16th Sunday in Ordinary Time</span>
+      <h3>19 July 2026</h3>
+      <div class="readings-two" style="margin-top:20px;">
+        <div>
+          <div class="reading-entry">
+            <div class="reading-label">First Reading</div>
+            <div class="reading-ref">Genesis 18:1–10</div>
+          </div>
+          <div class="reading-entry">
+            <div class="reading-label">Responsorial Psalm</div>
+            <div class="reading-ref">Psalm 14</div>
+          </div>
+        </div>
+        <div>
+          <div class="reading-entry">
+            <div class="reading-label">Second Reading</div>
+            <div class="reading-ref">Colossians 1:24–28</div>
+          </div>
+          <div class="reading-entry">
+            <div class="reading-label">Gospel</div>
+            <div class="reading-ref">Luke 10:38–42</div>
+          </div>
+        </div>
+      </div>
+      <p class="readings-note">Full texts available in the missalette at the back of the church, or your parish's usual online liturgy source.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand-name" style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Rathmines Parish</div>
+      <p class="fine">Prototype redesign, built with publicly available information from the parish's own website. Registered Charity Number 20016166.</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html#rhythm">Mass Times</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      <li><a href="index.html#visit">Visit</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
