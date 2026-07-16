@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
+import LivePlayer from "./LivePlayer";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Webcam",
 };
+
+const STREAM_URL =
+  "https://cdn3.wowza.com/5/TXkrK21OZktJNm91/CSTV-HTTP/maryimmacnewip.stream/playlist.m3u8";
+const FALLBACK_URL = "https://www.churchservices.tv/maryimmacdublin";
 
 export default function Webcam() {
   return (
@@ -24,25 +29,8 @@ export default function Webcam() {
       <section className={styles.section}>
         <div className="wrap">
           <div className={styles.playerFrame}>
-            <iframe
-              src="https://www.churchservices.tv/maryimmacdublin"
-              title="Live Mass webcam — Rathmines Parish"
-              allow="autoplay; fullscreen"
-              loading="lazy"
-            />
+            <LivePlayer src={STREAM_URL} fallbackHref={FALLBACK_URL} />
           </div>
-          <p className={styles.fallbackNote}>
-            If the player above doesn&apos;t load, watch directly on
-            churchservices.tv:
-          </p>
-          <a
-            className="btn-primary"
-            href="https://www.churchservices.tv/maryimmacdublin"
-            target="_blank"
-            rel="noopener"
-          >
-            Open the live stream →
-          </a>
 
           <div className={styles.infoRow}>
             <div>
