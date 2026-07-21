@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import LivePlayer from "./LivePlayer";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Webcam",
 };
 
-const STREAM_URL =
-  "https://cdn3.wowza.com/5/TXkrK21OZktJNm91/CSTV-HTTP/maryimmacnewip.stream/playlist.m3u8";
-const FALLBACK_URL = "https://www.churchservices.tv/maryimmacdublin";
+const CHURCHSERVICES_URL = "https://www.churchservices.tv/maryimmacdublin";
 
 export default function Webcam() {
   return (
@@ -29,11 +26,20 @@ export default function Webcam() {
       <section className={styles.section}>
         <div className="wrap">
           <div className={styles.playerFrame}>
-            <span className={styles.liveBadge}>
-              <span className={styles.liveDot} aria-hidden="true" />
-              Live
-            </span>
-            <LivePlayer src={STREAM_URL} fallbackHref={FALLBACK_URL} />
+            <div className={styles.watchContent}>
+              <a
+                className={`btn-primary ${styles.watchBtn}`}
+                href={CHURCHSERVICES_URL}
+                target="_blank"
+                rel="noopener"
+              >
+                ▶ Watch Mass Live
+              </a>
+              <p className={styles.watchSchedule}>
+                Vigil Mass, Saturday 6:00 PM · Sunday 11:00 AM &amp; 6:00 PM
+                (Folk Mass) · Weekday Masses Tue, Thu &amp; Fri, 10:00 AM
+              </p>
+            </div>
           </div>
 
           <div className={styles.infoRow}>

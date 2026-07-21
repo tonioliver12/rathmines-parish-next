@@ -2,18 +2,77 @@
   padding: 64px 0;
 }
 
+/*
+ * Static placeholder card, not a live embed.
+ *
+ * We tried embedding churchservices.tv/maryimmacdublin directly in an
+ * iframe (with and without a CSS crop hack to hide their header/search).
+ * Confirmed by repeated testing: their page renders inside an iframe only
+ * ~25% of the time — the rest of the time the box is solid black, with no
+ * change to our code or the viewport width in between. Visiting the same
+ * URL directly (un-embedded) always worked. This points to anti-embedding
+ * behaviour on their side (they briefly top-navigated our whole tab to
+ * their own origin during one earlier test, a classic frame-busting
+ * pattern) that we can't fix from our end. Rather than ship a player
+ * that's broken 3 times out of 4, this is a static card with a button
+ * that opens their real stream in a new tab.
+ *
+ * `app/webcam/LivePlayer.tsx` (an hls.js-based player pointed directly at
+ * the underlying Wowza stream, bypassing churchservices.tv's page
+ * entirely) is further along and doesn't have this reliability problem,
+ * but is blocked on a separate, unrelated issue — see the comment at the
+ * top of that file — and is intentionally left unfinished/unused for now.
+ */
 .playerFrame {
   aspect-ratio: 16 / 9;
   width: 100%;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #0d1512;
+  background-color: #0d1512;
+  background-image: url("https://www.rathminesparish.ie/wp-content/uploads/2020/12/dome.jpg");
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
+.playerFrame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 21, 18, 0.6),
+    rgba(13, 21, 18, 0.8)
+  );
+}
+
+.watchContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 24px;
+}
+
+.watchBtn {
+  font-size: 1.05rem;
+  padding: 17px 32px;
+}
+
+.watchSchedule {
+  color: #d8d3c4;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+/* Used by LivePlayer.tsx (parked — see comment at top of that file). */
 .playerFrame video {
   width: 100%;
   height: 100%;
@@ -62,6 +121,7 @@
   }
 }
 
+/* Used by LivePlayer.tsx (parked — see comment at top of that file). */
 .fallback {
   color: #d8d3c4;
   text-align: center;
