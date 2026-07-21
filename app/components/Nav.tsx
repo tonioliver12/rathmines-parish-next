@@ -1,7 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./Nav.module.css";
 
+const NAV_LINKS = [
+  { href: "/#rhythm", label: "Mass Times" },
+  { href: "/events", label: "Events" },
+  { href: "/#sacraments", label: "Sacraments" },
+  { href: "/news", label: "Latest News" },
+  { href: "/youth", label: "Youth" },
+  { href: "/#visit", label: "Visit" },
+];
+
 export default function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className={styles.nav}>
       <div className={`wrap ${styles.inner}`}>
@@ -18,26 +33,25 @@ export default function Nav() {
             </div>
           </div>
         </div>
+
         <ul className={styles.links}>
-          <li>
-            <Link href="/#rhythm">Mass Times</Link>
-          </li>
-          <li>
-            <Link href="/events">Events</Link>
-          </li>
-          <li>
-            <Link href="/#sacraments">Sacraments</Link>
-          </li>
-          <li>
-            <Link href="/news">Latest News</Link>
-          </li>
-          <li>
-            <Link href="/youth">Youth</Link>
-          </li>
-          <li>
-            <Link href="/#visit">Visit</Link>
-          </li>
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
         </ul>
+
+        <button
+          type="button"
+          className={styles.menuToggle}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
         <div className={styles.actions}>
           <Link href="/mass-intentions" className={styles.requestBtn}>
             Request a Mass
@@ -47,6 +61,32 @@ export default function Nav() {
           </Link>
         </div>
       </div>
+
+      {menuOpen ? (
+        <div className={styles.mobileMenu}>
+          <ul className={styles.mobileLinks}>
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.mobileActions}>
+            <Link
+              href="/mass-intentions"
+              className={styles.requestBtn}
+              onClick={closeMenu}
+            >
+              Request a Mass
+            </Link>
+            <Link href="/#give" className={styles.cta} onClick={closeMenu}>
+              Donate
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </nav>
   );
 }
