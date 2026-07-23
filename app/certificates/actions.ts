@@ -1,6 +1,7 @@
 "use server";
 
 import { appendSubmission } from "@/lib/submissions";
+import { sendNotificationEmail } from "@/lib/email";
 
 export type CertificateState = {
   status: "idle" | "success" | "error";
@@ -35,9 +36,6 @@ export async function submitCertificateRequest(
     };
   }
 
-  // TODO: wire this up to a real backend (e.g. Resend, or the parish's own
-  // system) once that decision is made. For now the request is logged and
-  // saved locally so it isn't lost, and can be actioned manually.
   console.log("[certificate-request]", {
     certName,
     certType,
@@ -47,6 +45,8 @@ export async function submitCertificateRequest(
     certPhone,
   });
 
+  // Save locally first — this is the record of the request. Email is a
+  // secondary notification and must not risk losing it.
   await appendSubmission("certificate-requests.jsonl", {
     certName,
     certType,
@@ -54,6 +54,20 @@ export async function submitCertificateRequest(
     certReason,
     certEmail,
     certPhone,
+  });
+
+  await sendNotificationEmail({
+    subject: "New Certificate Request",
+    text: [
+      "A new certificate request was submitted on the website.",
+      "",
+      `Full name (as recorded): ${certName}`,
+      `Certificate needed: ${certType || "—"}`,
+      `Approximate date of sacrament: ${certDate || "—"}`,
+      `Reason: ${certReason || "—"}`,
+      `Email: ${certEmail}`,
+      `Phone: ${certPhone || "—"}`,
+    ].join("\n"),
   });
 
   return {

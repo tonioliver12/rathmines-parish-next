@@ -1,6 +1,7 @@
 "use server";
 
 import { appendSubmission } from "@/lib/submissions";
+import { sendNotificationEmail } from "@/lib/email";
 
 export type MassIntentionState = {
   status: "idle" | "success" | "error";
@@ -39,9 +40,6 @@ export async function submitMassIntention(
     };
   }
 
-  // TODO: wire this up to a real backend (e.g. Resend, or the parish's own
-  // system) once that decision is made. For now the request is logged and
-  // saved locally so it isn't lost, and can be actioned manually.
   console.log("[mass-intention-request]", {
     requestor,
     email,
@@ -52,6 +50,8 @@ export async function submitMassIntention(
     notes,
   });
 
+  // Save locally first — this is the record of the request. Email is a
+  // secondary notification and must not risk losing it.
   await appendSubmission("mass-intention-requests.jsonl", {
     requestor,
     email,
@@ -60,6 +60,21 @@ export async function submitMassIntention(
     intentionName,
     preferredDate,
     notes,
+  });
+
+  await sendNotificationEmail({
+    subject: "New Mass Intention Request",
+    text: [
+      "A new Mass intention request was submitted on the website.",
+      "",
+      `Name: ${requestor}`,
+      `Email: ${email}`,
+      `Phone: ${phone || "—"}`,
+      `Offered: ${intentionType || "—"}`,
+      `Name(s) to be remembered: ${intentionName}`,
+      `Preferred date: ${preferredDate || "—"}`,
+      `Notes: ${notes || "—"}`,
+    ].join("\n"),
   });
 
   return {
